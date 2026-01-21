@@ -4,10 +4,12 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import { Award, TrendingUp, Users, Mail, Phone, Globe, MapPin, Star, ArrowRight, Sparkles, Zap } from 'lucide-react'
 import FoodBanner from '@/components/FoodBanner'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function FranchisePage() {
   const { scrollYProgress } = useScroll()
   const heroY = useTransform(scrollYProgress, [0, 0.5], ['0%', '20%'])
+  const { t, dir } = useLanguage()
 
   return (
     <div className="pt-20">

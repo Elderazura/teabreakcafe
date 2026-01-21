@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Mail, Phone, MapPin, MessageCircle, Instagram, Facebook, ExternalLink, ArrowRight } from 'lucide-react'
 import SocialFeed from '@/components/SocialFeed'
 import FoodBanner from '@/components/FoodBanner'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const blogPosts = [
   {
@@ -43,6 +44,7 @@ const tiktokPosts = [
 export default function ContactPage() {
   const { scrollYProgress } = useScroll()
   const heroY = useTransform(scrollYProgress, [0, 0.5], ['0%', '20%'])
+  const { t, dir } = useLanguage()
 
   return (
     <div className="pt-20">
@@ -69,7 +71,7 @@ export default function ContactPage() {
             transition={{ duration: 0.8 }}
             className="font-display text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-2xl"
           >
-            Talk to Us. We Don't <span className="gradient-text">Bite</span>
+            {t('contact.hero.title')} <span className="gradient-text">{t('contact.hero.title')}</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -77,7 +79,7 @@ export default function ContactPage() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-xl md:text-2xl text-gray-200 drop-shadow-lg"
           >
-            (Unlike Our Burgers)
+            {t('contact.hero.subtitle')}
           </motion.p>
         </div>
       </section>
@@ -108,9 +110,9 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="p-8">
-                <h2 className="font-display text-2xl font-bold mb-4 text-mustard">Customer Service</h2>
+                <h2 className="font-display text-2xl font-bold mb-4 text-mustard">{t('contact.customer.title')}</h2>
                 <p className="text-gray-400 mb-6">
-                  Did we make your day? Did we forget your extra sauce? Let us know. We are obsessed with feedback.
+                  {t('contact.customer.desc')}
                 </p>
                 <div className="space-y-4">
                   <a
@@ -153,9 +155,9 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="p-8">
-                <h2 className="font-display text-2xl font-bold mb-4 text-mustard">Delivery</h2>
+                <h2 className="font-display text-2xl font-bold mb-4 text-mustard">{t('contact.delivery.title')}</h2>
                 <p className="text-gray-400 mb-6">
-                  Too cozy to leave the couch? We are on all the apps.
+                  {t('contact.delivery.desc')}
                 </p>
                 <div className="space-y-4">
                   <a
@@ -202,9 +204,9 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="p-8">
-                <h2 className="font-display text-2xl font-bold mb-4 text-mustard">Social Media</h2>
+                <h2 className="font-display text-2xl font-bold mb-4 text-mustard">{t('contact.social.title')}</h2>
                 <p className="text-gray-400 mb-6">
-                  Follow us for thirst traps (of tea).
+                  {t('contact.social.desc')}
                 </p>
                 <div className="space-y-4">
                   <a
@@ -367,10 +369,10 @@ export default function ContactPage() {
           >
             <MapPin className="w-16 h-16 text-mustard mx-auto mb-6" />
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
-              Visit Us <span className="gradient-text">In Person</span>
+              {t('contact.visit.title')} <span className="gradient-text">{t('contact.visit.title')}</span>
             </h2>
             <p className="text-xl text-gray-300 mb-8">
-              We have 20+ locations across Abu Dhabi, Dubai, Ajman, RAK, and Fujairah.
+              {t('contact.visit.desc')}
             </p>
             <motion.a
               href="/locations"
@@ -378,7 +380,7 @@ export default function ContactPage() {
               whileTap={{ scale: 0.95 }}
               className="inline-block px-10 py-4 bg-mustard text-black font-bold text-lg rounded-full hover:bg-mustard-400 transition-colors"
             >
-              Find Your Nearest Location
+              {t('contact.visit.button')}
             </motion.a>
           </motion.div>
         </div>

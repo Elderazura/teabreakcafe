@@ -7,11 +7,13 @@ import { Coffee, Utensils, Droplet, Flame, Download, Eye, ArrowRight, FileText, 
 import { useState } from 'react'
 import FoodBanner from '@/components/FoodBanner'
 import menuData from '@/data/menu.json'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function MenuPage() {
   const [pdfViewerOpen, setPdfViewerOpen] = useState(false)
   const { scrollYProgress } = useScroll()
   const heroY = useTransform(scrollYProgress, [0, 0.5], ['0%', '20%'])
+  const { t, dir } = useLanguage()
 
   // Menu sections with images
   const menuSections = [
@@ -46,8 +48,8 @@ export default function MenuPage() {
     },
     {
       id: 'burgers',
-      title: 'The Burger Lab',
-      subtitle: 'Homemade buns. Serious Beef. No nonsense.',
+      title: t('menu.sections.burgers.title'),
+      subtitle: t('menu.sections.burgers.subtitle'),
       icon: Utensils,
       image: '/images/landscape/menu/menu 2.jpeg',
       items: [
@@ -80,8 +82,8 @@ export default function MenuPage() {
     },
     {
       id: 'sandwiches',
-      title: 'The "Semi" Legends',
-      subtitle: 'The \'Semi\' method: Fast, Fresh, Flavorful.',
+      title: t('menu.sections.sandwiches.title'),
+      subtitle: t('menu.sections.sandwiches.subtitle'),
       icon: Flame,
       image: '/images/landscape/menu/menu3.jpeg',
       items: [
@@ -174,7 +176,7 @@ export default function MenuPage() {
             transition={{ duration: 0.8 }}
             className="font-display text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-2xl"
           >
-            A <span className="gradient-text">Gastronomic</span> Journey
+            {t('menu.hero.title')} <span className="gradient-text">{t('menu.hero.title')}</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -182,7 +184,7 @@ export default function MenuPage() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-xl md:text-2xl text-gray-200 mb-8 drop-shadow-lg"
           >
-            Grouped by vibe, not just category. Because food is an experience.
+            {t('menu.hero.subtitle')}
           </motion.p>
 
           {/* PDF Menu Buttons */}
@@ -199,7 +201,7 @@ export default function MenuPage() {
               className="px-8 py-4 bg-mustard text-black font-bold text-lg rounded-full hover:bg-mustard-400 transition-colors flex items-center gap-2 shadow-lg shadow-mustard/50"
             >
               <Eye className="w-5 h-5" />
-              View PDF Menu
+              {t('menu.hero.viewPdf')}
             </motion.button>
             <motion.a
               href="/menu/TEA BREAK - MENU.pdf"
@@ -209,7 +211,7 @@ export default function MenuPage() {
               className="px-8 py-4 border-2 border-white text-white font-bold text-lg rounded-full hover:bg-white/10 transition-colors flex items-center gap-2 backdrop-blur-sm"
             >
               <Download className="w-5 h-5" />
-              Download PDF
+              {t('menu.hero.downloadPdf')}
             </motion.a>
           </motion.div>
         </div>
@@ -258,7 +260,7 @@ export default function MenuPage() {
             <div className="flex items-center justify-center gap-3 mb-4">
               <Coffee className="w-10 h-10 text-mustard" />
               <h2 className="font-display text-4xl md:text-5xl font-bold">
-                Our <span className="gradient-text">Tea Collection</span>
+                {t('menu.tea.title')} <span className="gradient-text">{t('menu.tea.title')}</span>
               </h2>
             </div>
           </motion.div>
@@ -267,7 +269,7 @@ export default function MenuPage() {
           <div className="mb-16">
             <h3 className="font-display text-2xl font-bold text-mustard mb-6 flex items-center gap-2">
               <Flame className="w-6 h-6" />
-              Hot Tea
+              {t('menu.tea.hotTea')}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {menuData.menu.hot_tea.map((item: any, index: number) => (
@@ -292,7 +294,7 @@ export default function MenuPage() {
           <div className="mb-16">
             <h3 className="font-display text-2xl font-bold text-mustard mb-6 flex items-center gap-2">
               <Droplet className="w-6 h-6" />
-              Iced Tea
+              {t('menu.tea.icedTea')}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {menuData.menu.iced_tea.map((item: any, index: number) => (

@@ -83,6 +83,7 @@ const tiktokPosts = [
 export default function BlogPage() {
   const { scrollYProgress } = useScroll()
   const heroY = useTransform(scrollYProgress, [0, 0.5], ['0%', '20%'])
+  const { t, dir } = useLanguage()
 
   return (
     <div className="pt-20">
@@ -132,7 +133,7 @@ export default function BlogPage() {
             transition={{ duration: 0.8 }}
             className="font-display text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-2xl"
           >
-            The <span className="gradient-text">Tea Break</span> Blog
+            {t('blog.hero.title')} <span className="gradient-text">{t('blog.hero.title')}</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -140,7 +141,7 @@ export default function BlogPage() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-xl md:text-2xl text-gray-200 drop-shadow-lg"
           >
-            Where food science meets food love.
+            {t('blog.hero.subtitle')}
           </motion.p>
         </div>
       </section>
@@ -155,9 +156,9 @@ export default function BlogPage() {
             className="text-center mb-12"
           >
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              Latest <span className="gradient-text">Stories</span>
+              {t('blog.latest')} <span className="gradient-text">{t('blog.latest')}</span>
             </h2>
-            <p className="text-gray-400 text-lg">Food philosophy, science, and everything delicious</p>
+            <p className="text-gray-400 text-lg">{t('blog.desc')}</p>
           </motion.div>
 
           <div className="space-y-16">
@@ -215,7 +216,7 @@ export default function BlogPage() {
                       href={`/blog/${post.slug}`}
                       className="inline-flex items-center gap-2 text-mustard hover:text-mustard-400 font-semibold group/link"
                     >
-                      Read Full Story
+                      {t('blog.readFull')}
                       <ArrowRight className="w-5 h-5 group-hover/link:translate-x-2 transition-transform" />
                     </Link>
                   </div>
@@ -250,9 +251,9 @@ export default function BlogPage() {
             className="text-center mb-16"
           >
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              Follow Our <span className="gradient-text">Adventures</span>
+              {t('blog.follow')} <span className="gradient-text">{t('blog.follow')}</span>
             </h2>
-            <p className="text-gray-400 text-lg">See what's happening at Tea Break</p>
+            <p className="text-gray-400 text-lg">{t('blog.followDesc')}</p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -291,10 +292,10 @@ export default function BlogPage() {
             className="bg-black border-2 border-mustard/20 rounded-3xl p-12"
           >
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              Stay Updated with <span className="gradient-text">Tea Break</span>
+              {t('blog.newsletter.title')} <span className="gradient-text">{t('blog.newsletter.title')}</span>
             </h2>
             <p className="text-gray-300 text-lg mb-8">
-              Follow us on social media for daily food inspiration, behind-the-scenes content, and exclusive updates.
+              {t('blog.newsletter.desc')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
@@ -305,7 +306,7 @@ export default function BlogPage() {
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-mustard text-black font-bold rounded-full hover:bg-mustard-400 transition-colors"
               >
-                Follow on Instagram
+                {t('blog.newsletter.instagram')}
               </motion.a>
               <motion.a
                 href="https://www.tiktok.com/@teabreakcafe"
@@ -315,7 +316,7 @@ export default function BlogPage() {
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 border-2 border-mustard text-mustard rounded-full hover:bg-mustard hover:text-black transition-colors font-bold"
               >
-                Follow on TikTok
+                {t('blog.newsletter.tiktok')}
               </motion.a>
             </div>
           </motion.div>

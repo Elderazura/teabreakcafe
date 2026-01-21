@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { MapPin, Phone, Clock, Navigation, Star } from 'lucide-react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 interface Location {
   name: string
@@ -21,6 +22,7 @@ interface LocationCardProps {
 }
 
 export default function LocationCard({ location, index, city }: LocationCardProps) {
+  const { t } = useLanguage()
   const googleMapsUrl = location.mapUrl || `https://www.google.com/maps?q=${location.coordinates.lat},${location.coordinates.lng}`
   const telUrl = `tel:${location.phone.split(' / ')[0].replace(/\s/g, '').replace(/-/g, '')}`
 
@@ -110,7 +112,7 @@ export default function LocationCard({ location, index, city }: LocationCardProp
             className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-mustard/20 text-mustard rounded-lg hover:bg-mustard hover:text-black transition-colors text-sm font-semibold"
           >
             <Navigation className="w-4 h-4" />
-            Directions
+            {t('locations.card.directions')}
           </motion.a>
           <motion.a
             href={telUrl}
@@ -119,7 +121,7 @@ export default function LocationCard({ location, index, city }: LocationCardProp
             className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-mustard text-black rounded-lg hover:bg-mustard-400 transition-colors text-sm font-semibold"
           >
             <Phone className="w-4 h-4" />
-            Call Store
+            {t('locations.card.callStore')}
           </motion.a>
         </div>
       </div>

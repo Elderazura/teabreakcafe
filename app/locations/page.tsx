@@ -6,6 +6,7 @@ import { MapPin, Phone, Clock, Navigation, Search, Filter, X, Star, Sparkles, Ar
 import Image from 'next/image'
 import LocationCard from '@/components/LocationCard'
 import FoodBanner from '@/components/FoodBanner'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 // Location data structure combining JSON with existing data
 const locationsByCity = [
@@ -150,6 +151,7 @@ export default function LocationsPage() {
   const [hoveredLocation, setHoveredLocation] = useState<string | null>(null)
   const { scrollYProgress } = useScroll()
   const heroY = useTransform(scrollYProgress, [0, 0.5], ['0%', '20%'])
+  const { t, dir } = useLanguage()
 
   // Get all locations for the main map
   const allLocations = locationsByCity.flatMap(city => 
@@ -196,7 +198,7 @@ export default function LocationsPage() {
             transition={{ duration: 0.8 }}
             className="font-display text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-2xl"
           >
-            The <span className="gradient-text">Tea Break</span> Map
+            {t('locations.hero.title')} <span className="gradient-text">{t('locations.hero.title')}</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -204,7 +206,7 @@ export default function LocationsPage() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-xl md:text-2xl text-gray-200 mb-8 drop-shadow-lg"
           >
-            20+ locations across the UAE. Find your nearest Tea Break.
+            {t('locations.hero.subtitle')}
           </motion.p>
 
           {/* Quick Stats */}
@@ -216,15 +218,15 @@ export default function LocationsPage() {
           >
             <div className="bg-black/50 backdrop-blur-sm px-6 py-3 rounded-full border border-mustard/30">
               <span className="text-mustard font-bold text-2xl">{allLocations.length}+</span>
-              <span className="ml-2">Locations</span>
+              <span className="ml-2">{t('locations.hero.locations')}</span>
             </div>
             <div className="bg-black/50 backdrop-blur-sm px-6 py-3 rounded-full border border-mustard/30">
               <span className="text-mustard font-bold text-2xl">3</span>
-              <span className="ml-2">Cities</span>
+              <span className="ml-2">{t('locations.hero.cities')}</span>
             </div>
             <div className="bg-black/50 backdrop-blur-sm px-6 py-3 rounded-full border border-mustard/30">
               <span className="text-mustard font-bold text-2xl">24/7</span>
-              <span className="ml-2">Some Stores</span>
+              <span className="ml-2">{t('locations.hero.stores')}</span>
             </div>
           </motion.div>
         </div>
@@ -239,7 +241,7 @@ export default function LocationsPage() {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-mustard w-5 h-5" />
               <input
                 type="text"
-                placeholder="Search by location name or address..."
+                placeholder={t('locations.search.placeholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-12 pr-4 py-3 bg-black/50 border-2 border-mustard/20 rounded-full text-white placeholder-gray-400 focus:border-mustard focus:outline-none transition-colors"
@@ -264,7 +266,7 @@ export default function LocationsPage() {
                     : 'bg-black/50 border-2 border-mustard/20 text-mustard hover:border-mustard'
                 }`}
               >
-                All Cities
+                {t('locations.search.allCities')}
               </button>
               {locationsByCity.map((city) => (
                 <button
@@ -294,9 +296,9 @@ export default function LocationsPage() {
             className="text-center mb-8"
           >
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              View All <span className="gradient-text">Locations</span> on Map
+              {t('locations.map.title')} <span className="gradient-text">{t('locations.map.title')}</span>
             </h2>
-            <p className="text-gray-400">Click on the map to open in Google Maps</p>
+            <p className="text-gray-400">{t('locations.map.desc')}</p>
           </motion.div>
 
           <motion.div
@@ -315,8 +317,8 @@ export default function LocationsPage() {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   <Navigation className="w-20 h-20 text-mustard mx-auto mb-4 animate-pulse" />
-                  <p className="text-white text-xl font-bold mb-2">View All Locations</p>
-                  <p className="text-gray-300">Click to open in Google Maps</p>
+                  <p className="text-white text-xl font-bold mb-2">{t('locations.map.title')}</p>
+                  <p className="text-gray-300">{t('locations.map.desc')}</p>
                 </div>
               </div>
               {/* Location markers visualization */}
@@ -343,7 +345,7 @@ export default function LocationsPage() {
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-mustard text-black px-6 py-2 rounded-full font-bold opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
-                Click to view all locations in Google Maps
+                {t('locations.map.clickToView')}
               </div>
             </a>
           </motion.div>
