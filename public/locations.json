@@ -1,0 +1,60 @@
+{
+  "cafes": [
+    {
+      "location_map": "https://goo.gl/maps/U5V8ebYxNrTk2JVe6",
+      "contact_details": "Tel:-042833323/0504675787"
+    },
+    {
+      "location_map": "https://goo.gl/maps/YCz6ZqrBE9VMD2UB7",
+      "contact_details": "Tel:-043999337/0564117723"
+    },
+    {
+      "location_map": "https://goo.gl/maps/4QG25c6zgSSvm6fG8",
+      "contact_details": "Tel:-065467888/0547023475"
+    },
+    {
+      "location_map": "https://goo.gl/maps/8oYmQwLEdHrfKs619",
+      "contact_details": "Tel:-092244777/0501246698"
+    },
+    {
+      "location_map": "https://maps.app.goo.gl/x7kHHmQSmeyyZvUt6",
+      "contact_details": "Tel:-025588141/0565265688"
+    },
+    {
+      "location_map": "https://maps.app.goo.gl/mJNfEvZdWkNsfqsWA",
+      "contact_details": "Tel:-024443353/0544399964"
+    },
+    {
+      "location_map": "https://maps.app.goo.gl/H2kQfjB18zWjJKB58",
+      "contact_details": "Tel:-024441499/0504832217"
+    },
+    {
+      "location_map": "https://maps.app.goo.gl/y3h9sUxjjb6YTf4b8",
+      "contact_details": "Tel:-024442144/024913311/0525762823"
+    },
+    {
+      "location_map": "https://maps.app.goo.gl/3N4MnYxGFVdAy8nJA",
+      "contact_details": "Tel:-026712356/0544399918"
+    },
+    {
+      "location_map": "https://maps.app.goo.gl/roxu6D5nTDwEacyx7",
+      "contact_details": "Tel:-025651009/025630360/0509954772"
+    },
+    {
+      "location_map": "https://maps.app.goo.gl/9BecR8XGXXzAJAt69",
+      "contact_details": "Tel:-026227875/0544399974"
+    },
+    {
+      "location_map": "https://goo.gl/maps/e2uPBMkywhXTUKvv7",
+      "contact_details": "Tel:-025566155/0506204232"
+    },
+    {
+      "location_map": "https://maps.app.goo.gl/RgMDA2YDBmQYWX6Q9",
+      "contact_details": "Tel:-025566155/0506204232"
+    },
+    {
+      "location_map": "https://g.co/kgs/6KLgBHW",
+      "contact_details": "Tel:-092242110/0509757734"
+    }
+  ]
+}

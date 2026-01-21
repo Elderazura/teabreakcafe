@@ -1,0 +1,89 @@
+{
+  "menu": {
+    "hot_tea": [
+      {
+        "name": "Karak Tea",
+        "price": "2/4/6",
+        "description": "Small / Medium / Large"
+      },
+      {
+        "name": "Karak Tea Zafran",
+        "price": "3/5/7",
+        "description": "Small / Medium / Large"
+      },
+      {
+        "name": "Green Tea",
+        "price": "2/4/6",
+        "description": "Small / Medium / Large"
+      },
+      {
+        "name": "Black Tea",
+        "price": "2/4/6",
+        "description": "Small / Medium / Large"
+      },
+      {
+        "name": "Lemon Ginger Tea",
+        "price": "3/5/7",
+        "description": "Small / Medium / Large"
+      },
+      {
+        "name": "Karak Tea Double Zafran",
+        "price": "4/6/8",
+        "description": "Small / Medium / Large"
+      },
+      {
+        "name": "Honey Lemon Tea",
+        "price": "3/5/7",
+        "description": "Small / Medium / Large"
+      },
+      {
+        "name": "Ginger Karak Tea",
+        "price": "3/5/7",
+        "description": "Small / Medium / Large"
+      }
+    ],
+    "tea_flasks": [
+      {
+        "name": "Tea Flask / Karak Flask",
+        "price": "56/89",
+        "description": "1 litre / 2 litre"
+      },
+      {
+        "name": "Karak Zafran Flask",
+        "price": "68/99",
+        "description": "1 litre / 2 litre"
+      }
+    ],
+    "iced_tea": [
+      {
+        "name": "Peach",
+        "price": "12"
+      },
+      {
+        "name": "Lemon",
+        "price": "12"
+      },
+      {
+        "name": "Orange",
+        "price": "12/22",
+        "description": "Small / Large"
+      },
+      {
+        "name": "Hibiscus",
+        "price": "12"
+      },
+      {
+        "name": "Green Apple",
+        "price": "12"
+      },
+      {
+        "name": "Mango",
+        "price": "12"
+      },
+      {
+        "name": "Karak Ice Tea",
+        "price": "12"
+      }
+    ]
+  }
+}
