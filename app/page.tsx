@@ -59,21 +59,21 @@ export default function HomePage() {
 
   // Social media posts
   const instagramPosts = [
-    { id: '1', image: '/images/landscape/tb_a5.jpeg', likes: 1250 },
-    { id: '2', image: '/images/landscape/tb_a6.jpeg', likes: 890 },
-    { id: '3', image: '/images/landscape/tb_a7.jpeg', likes: 2100 },
-    { id: '4', image: '/images/landscape/tb_a1.jpeg', likes: 1500 },
-    { id: '5', image: '/images/landscape/tb_a2.jpeg', likes: 980 },
-    { id: '6', image: '/images/landscape/tb_a3.jpeg', likes: 1750 },
+    { id: '1', image: '/images/landscape/tb_a5.jpeg', platform: 'instagram' as const, likes: 1250 },
+    { id: '2', image: '/images/landscape/tb_a6.jpeg', platform: 'instagram' as const, likes: 890 },
+    { id: '3', image: '/images/landscape/tb_a7.jpeg', platform: 'instagram' as const, likes: 2100 },
+    { id: '4', image: '/images/landscape/tb_a1.jpeg', platform: 'instagram' as const, likes: 1500 },
+    { id: '5', image: '/images/landscape/tb_a2.jpeg', platform: 'instagram' as const, likes: 980 },
+    { id: '6', image: '/images/landscape/tb_a3.jpeg', platform: 'instagram' as const, likes: 1750 },
   ]
 
   const tiktokPosts = [
-    { id: '1', image: '/images/landscape/tb_a4.jpeg', likes: 5200 },
-    { id: '2', image: '/images/landscape/tb_a10.jpeg', likes: 3800 },
-    { id: '3', image: '/images/landscape/tb_a11.jpeg', likes: 6700 },
-    { id: '4', image: '/images/landscape/tb_a12.jpeg', likes: 4500 },
-    { id: '5', image: '/images/landscape/tb_a8.jpeg', likes: 3200 },
-    { id: '6', image: '/images/landscape/tb_a9.jpeg', likes: 5800 },
+    { id: '1', image: '/images/landscape/tb_a4.jpeg', platform: 'tiktok' as const, likes: 5200 },
+    { id: '2', image: '/images/landscape/tb_a10.jpeg', platform: 'tiktok' as const, likes: 3800 },
+    { id: '3', image: '/images/landscape/tb_a11.jpeg', platform: 'tiktok' as const, likes: 6700 },
+    { id: '4', image: '/images/landscape/tb_a12.jpeg', platform: 'tiktok' as const, likes: 4500 },
+    { id: '5', image: '/images/landscape/tb_a8.jpeg', platform: 'tiktok' as const, likes: 3200 },
+    { id: '6', image: '/images/landscape/tb_a9.jpeg', platform: 'tiktok' as const, likes: 5800 },
   ]
 
   return (
