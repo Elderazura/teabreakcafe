@@ -5,9 +5,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import OrderModal from './OrderModal'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -70,14 +72,14 @@ export default function Navigation() {
                 />
               </Link>
             ))}
-            <motion.a
-              href="/menu"
+            <motion.button
+              onClick={() => setIsOrderModalOpen(true)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-6 py-2 bg-mustard text-black font-semibold rounded-full hover:bg-mustard-400 transition-colors"
             >
               Order Now
-            </motion.a>
+            </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -111,18 +113,24 @@ export default function Navigation() {
                   {item.label}
                 </Link>
               ))}
-              <motion.a
-                href="/menu"
+              <motion.button
+                onClick={() => {
+                  setIsOrderModalOpen(true)
+                  setIsOpen(false)
+                }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="block w-full text-center px-6 py-3 bg-mustard text-black font-semibold rounded-full"
               >
                 Order Now
-              </motion.a>
+              </motion.button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Order Modal */}
+      <OrderModal isOpen={isOrderModalOpen} onClose={() => setIsOrderModalOpen(false)} />
     </motion.nav>
   )
 }

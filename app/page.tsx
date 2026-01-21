@@ -4,14 +4,16 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight, Award, Coffee, Utensils, Sparkles, Zap, Clock, MapPin } from 'lucide-react'
 import Image from 'next/image'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import ImageSlider from '@/components/ImageSlider'
 import FoodBanner from '@/components/FoodBanner'
 import SocialFeed from '@/components/SocialFeed'
+import OrderModal from '@/components/OrderModal'
 
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll()
+  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false)
   
   // Parallax transforms
   const heroY = useTransform(scrollYProgress, [0, 0.5], ['0%', '20%'])
@@ -193,15 +195,15 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              <motion.a
-                href="/menu"
+              <motion.button
+                onClick={() => setIsOrderModalOpen(true)}
                 whileHover={{ scale: 1.05, rotate: 1 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-mustard text-black font-bold text-lg rounded-full hover:bg-mustard-400 transition-colors flex items-center gap-2 group shadow-lg shadow-mustard/50"
               >
                 I'm Hungry (Order Now)
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-              </motion.a>
+              </motion.button>
               <motion.a
                 href="/locations"
                 whileHover={{ scale: 1.05, rotate: -1 }}
@@ -566,6 +568,9 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Order Modal */}
+      <OrderModal isOpen={isOrderModalOpen} onClose={() => setIsOrderModalOpen(false)} />
     </div>
   )
 }
