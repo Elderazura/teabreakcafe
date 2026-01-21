@@ -43,7 +43,6 @@ export default function Footer() {
                   className="object-contain"
                 />
               </motion.div>
-              <span className="font-display font-bold text-xl hidden sm:block">Tea Break</span>
             </div>
             <p className="text-gray-400 text-sm mb-4">
               Official Sponsor of Your Cheat Day. Fresh Wagyu, homemade buns, and regrets? Never heard of them.

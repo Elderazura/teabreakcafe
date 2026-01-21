@@ -53,9 +53,6 @@ export default function Navigation() {
                 priority
               />
             </motion.div>
-            <span className="font-display font-bold text-xl group-hover:text-mustard transition-colors hidden sm:block">
-              Tea Break
-            </span>
           </Link>
 
           {/* Desktop Navigation */}
