@@ -6,11 +6,13 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import OrderModal from './OrderModal'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { t, dir } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,19 +23,20 @@ export default function Navigation() {
   }, [])
 
   const navItems = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/menu', label: 'Menu' },
-    { href: '/locations', label: 'Locations' },
-    { href: '/franchise', label: 'Franchise' },
-    { href: '/blog', label: 'Blog' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/', label: t('nav.home') },
+    { href: '/about', label: t('nav.about') },
+    { href: '/menu', label: t('nav.menu') },
+    { href: '/locations', label: t('nav.locations') },
+    { href: '/franchise', label: t('nav.franchise') },
+    { href: '/blog', label: t('nav.blog') },
+    { href: '/contact', label: t('nav.contact') },
   ]
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
+      dir={dir}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? 'bg-black/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}
@@ -78,7 +81,7 @@ export default function Navigation() {
               whileTap={{ scale: 0.95 }}
               className="px-6 py-2 bg-mustard text-black font-semibold rounded-full hover:bg-mustard-400 transition-colors"
             >
-              Order Now
+              {t('nav.orderNow')}
             </motion.button>
           </div>
 
@@ -122,7 +125,7 @@ export default function Navigation() {
                 whileTap={{ scale: 0.95 }}
                 className="block w-full text-center px-6 py-3 bg-mustard text-black font-semibold rounded-full"
               >
-                Order Now
+                {t('nav.orderNow')}
               </motion.button>
             </div>
           </motion.div>

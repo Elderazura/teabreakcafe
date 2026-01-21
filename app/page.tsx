@@ -9,11 +9,13 @@ import ImageSlider from '@/components/ImageSlider'
 import FoodBanner from '@/components/FoodBanner'
 import SocialFeed from '@/components/SocialFeed'
 import OrderModal from '@/components/OrderModal'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll()
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false)
+  const { t, dir } = useLanguage()
   
   // Parallax transforms
   const heroY = useTransform(scrollYProgress, [0, 0.5], ['0%', '20%'])
@@ -184,9 +186,9 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              We serve 100% fresh Wagyu, homemade buns, and regrets? Never heard of them.
+              {t('home.hero.title')}
               <br />
-              <span className="text-mustard font-semibold">Welcome to Tea Break.</span>
+              <span className="text-mustard font-semibold">{t('home.hero.subtitle')}</span>
             </motion.p>
 
             <motion.div
@@ -201,7 +203,7 @@ export default function HomePage() {
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-mustard text-black font-bold text-lg rounded-full hover:bg-mustard-400 transition-colors flex items-center gap-2 group shadow-lg shadow-mustard/50"
               >
-                I'm Hungry (Order Now)
+                {t('home.hero.cta1')}
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" />
               </motion.button>
               <motion.a
@@ -210,7 +212,7 @@ export default function HomePage() {
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 border-2 border-white text-white font-bold text-lg rounded-full hover:bg-white/10 transition-colors flex items-center gap-2 backdrop-blur-sm"
               >
-                Where Are You? (Find Us)
+                {t('home.hero.cta2')}
               </motion.a>
             </motion.div>
           </motion.div>
@@ -256,7 +258,7 @@ export default function HomePage() {
             className="text-center mb-10"
           >
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              Featured <span className="gradient-text">Favorites</span>
+              {t('home.featured')} <span className="gradient-text">Favorites</span>
             </h2>
             <p className="text-gray-400">Our most loved items</p>
           </motion.div>
@@ -311,7 +313,7 @@ export default function HomePage() {
               href="/menu"
               className="inline-flex items-center gap-2 px-6 py-3 bg-mustard text-black font-bold rounded-full hover:bg-mustard-400 transition-colors"
             >
-              View Full Menu
+              {t('home.viewMenu')}
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -380,7 +382,7 @@ export default function HomePage() {
             className="text-center mb-12"
           >
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              Latest from <span className="gradient-text">Our Blog</span>
+              {t('home.blog')} <span className="gradient-text">Our Blog</span>
             </h2>
             <p className="text-gray-400">Food stories, tips, and more</p>
           </motion.div>
