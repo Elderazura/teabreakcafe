@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { ArrowRight, Calendar, Sparkles, Zap } from 'lucide-react'
 import SocialFeed from '@/components/SocialFeed'
 import FoodBanner from '@/components/FoodBanner'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const blogPosts = [
   {
