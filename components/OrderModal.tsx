@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Phone, ExternalLink, ShoppingBag } from 'lucide-react'
 import Image from 'next/image'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 interface OrderModalProps {
   isOpen: boolean
@@ -10,6 +11,7 @@ interface OrderModalProps {
 }
 
 export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
+  const { t } = useLanguage()
   const deliveryOptions = [
     {
       name: 'Talabat',
@@ -79,9 +81,9 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                   <div className="text-center">
                     <ShoppingBag className="w-12 h-12 text-mustard mx-auto mb-2" />
                     <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-1">
-                      Order from <span className="gradient-text">Tea Break</span>
+                      {t('order.title')} <span className="gradient-text">Tea Break</span>
                     </h2>
-                    <p className="text-gray-300 text-sm">Choose your preferred delivery platform</p>
+                    <p className="text-gray-300 text-sm">{t('order.subtitle')}</p>
                   </div>
                 </div>
               </div>
@@ -129,7 +131,7 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <Phone className="w-6 h-6 text-mustard" />
-                    <h3 className="font-display text-xl font-bold text-white">Call to Order</h3>
+                    <h3 className="font-display text-xl font-bold text-white">{t('order.callTitle')}</h3>
                   </div>
                   <motion.a
                     href="tel:+97124442144"
@@ -138,7 +140,7 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                     className="flex items-center justify-between bg-black/50 hover:bg-black/70 rounded-lg p-3 transition-colors group"
                   >
                     <div>
-                      <span className="text-white font-semibold block text-sm">Call the Cafe Directly</span>
+                      <span className="text-white font-semibold block text-sm">{t('order.callDesc')}</span>
                       <span className="text-mustard text-xs">+971 2 444 2144</span>
                     </div>
                     <Phone className="w-4 h-4 text-mustard group-hover:text-mustard-400 transition-colors" />
@@ -152,7 +154,7 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                   transition={{ delay: 0.4 }}
                   className="text-center pt-3 border-t border-mustard/20"
                 >
-                  <p className="text-gray-400 mb-3 text-sm">Or visit us at one of our 20+ locations</p>
+                  <p className="text-gray-400 mb-3 text-sm">{t('order.visit')}</p>
                   <motion.a
                     href="/locations"
                     onClick={onClose}
@@ -160,7 +162,7 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                     whileTap={{ scale: 0.95 }}
                     className="inline-flex items-center gap-2 px-5 py-2 border-2 border-mustard text-mustard rounded-full hover:bg-mustard hover:text-black transition-colors font-semibold text-sm"
                   >
-                    Find a Location
+                    {t('order.findLocation')}
                     <ExternalLink className="w-4 h-4" />
                   </motion.a>
                 </motion.div>

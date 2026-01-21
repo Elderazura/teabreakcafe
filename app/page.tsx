@@ -174,10 +174,10 @@ export default function HomePage() {
                 }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
-                Official Sponsor
+                {t('home.hero.sponsor')}
               </motion.span>
               <br />
-              <span className="text-white">of Your Cheat Day</span>
+              <span className="text-white">{t('home.hero.cheatDay')}</span>
             </motion.h1>
             
             <motion.p
@@ -258,9 +258,9 @@ export default function HomePage() {
             className="text-center mb-10"
           >
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              {t('home.featured')} <span className="gradient-text">Favorites</span>
+              {t('home.featured')} <span className="gradient-text">{t('home.featured')}</span>
             </h2>
-            <p className="text-gray-400">Our most loved items</p>
+            <p className="text-gray-400">{t('home.featuredDesc')}</p>
           </motion.div>
 
           {/* Sliding Image Gallery */}
@@ -347,9 +347,9 @@ export default function HomePage() {
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: Utensils, number: '20+', label: 'Locations Across UAE' },
-              { icon: Award, number: '2013', label: 'Serving Since' },
-              { icon: Coffee, number: '100%', label: 'Fresh Daily' },
+              { icon: Utensils, number: '20+', label: t('home.stats.locations') },
+              { icon: Award, number: '2013', label: t('home.stats.serving') },
+              { icon: Coffee, number: '100%', label: t('home.stats.fresh') },
             ].map((stat, index) => {
               const Icon = stat.icon
               return (
@@ -382,9 +382,9 @@ export default function HomePage() {
             className="text-center mb-12"
           >
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              {t('home.blog')} <span className="gradient-text">Our Blog</span>
+              {t('home.blog')} <span className="gradient-text">{t('home.blog')}</span>
             </h2>
-            <p className="text-gray-400">Food stories, tips, and more</p>
+            <p className="text-gray-400">{t('home.blogDesc')}</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -414,7 +414,7 @@ export default function HomePage() {
                     href={`/blog/${post.slug}`}
                     className="inline-flex items-center gap-2 text-mustard hover:text-mustard-400 font-semibold"
                   >
-                    Read More
+                    {t('common.readMore')}
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
@@ -427,7 +427,7 @@ export default function HomePage() {
               href="/blog"
               className="inline-flex items-center gap-2 px-6 py-3 border-2 border-mustard text-mustard rounded-full hover:bg-mustard hover:text-black transition-colors font-semibold"
             >
-              View All Posts
+              {t('common.viewAll')}
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -444,9 +444,9 @@ export default function HomePage() {
             className="text-center mb-12"
           >
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              Follow Our <span className="gradient-text">Journey</span>
+              {t('home.social')} <span className="gradient-text">{t('home.social')}</span>
             </h2>
-            <p className="text-gray-400">See what's happening at Tea Break</p>
+            <p className="text-gray-400">{t('home.socialDesc')}</p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -483,7 +483,7 @@ export default function HomePage() {
             className="text-center mb-12"
           >
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              People Love Us. <span className="gradient-text">(And We Love Them Back)</span>
+              {t('home.reviews')}
             </h2>
           </motion.div>
 

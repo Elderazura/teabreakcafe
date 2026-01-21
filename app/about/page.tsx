@@ -7,10 +7,12 @@ import { Award, Coffee, Heart, Users, ArrowRight, Sparkles, Zap, Clock, ChefHat 
 import { useRef } from 'react'
 import FoodBanner from '@/components/FoodBanner'
 import ImageSlider from '@/components/ImageSlider'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function AboutPage() {
   const heroRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll()
+  const { t, dir } = useLanguage()
   
   const heroY = useTransform(scrollYProgress, [0, 0.5], ['0%', '20%'])
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0.8])
@@ -94,9 +96,9 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="font-display text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-2xl"
           >
-            From a Single <span className="gradient-text">Teapot</span> in Shahama
+            {t('about.hero.title')} <span className="gradient-text">{t('about.hero.title')}</span>
             <br />
-            to a <span className="gradient-text">UAE Empire</span>
+            {t('about.hero.title2')} <span className="gradient-text">{t('about.hero.title2')}</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
