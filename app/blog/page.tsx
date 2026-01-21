@@ -1,8 +1,11 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, Calendar } from 'lucide-react'
+import Image from 'next/image'
+import { ArrowRight, Calendar, Sparkles, Zap } from 'lucide-react'
+import SocialFeed from '@/components/SocialFeed'
+import FoodBanner from '@/components/FoodBanner'
 
 const blogPosts = [
   {
@@ -19,6 +22,8 @@ Why? Because we have trust issues with frozen food. And because you deserve bett
 
 So next time you see 'Semi' on our menu, know that it means: fresh, fast, and flavorful. The holy trinity of fast-casual dining.`,
     date: '2024-01-15',
+    image: '/images/landscape/tb_a2.jpeg',
+    category: 'Food Philosophy',
   },
   {
     slug: 'the-science-of-the-cheetos-burger',
@@ -35,6 +40,8 @@ Let's break down the science:
 
 Is it over the top? Yes. Is it delicious? Also yes. And sometimes, that's all the science you need.`,
     date: '2024-01-10',
+    image: '/images/landscape/tb_a4.jpeg',
+    category: 'Food Science',
   },
   {
     slug: 'a-love-letter-to-double-saffron',
@@ -50,35 +57,80 @@ So here's to Double Saffron. The tea that started a revolution. The drink that m
 
 Once you've tried it, there's no going back. Consider yourself warned.`,
     date: '2024-01-05',
+    image: '/images/landscape/tb_a1.jpeg',
+    category: 'Beverages',
   },
 ]
 
+const instagramPosts = [
+  { id: '1', image: '/images/landscape/tb_a5.jpeg', platform: 'instagram' as const, likes: 1250 },
+  { id: '2', image: '/images/landscape/tb_a6.jpeg', platform: 'instagram' as const, likes: 890 },
+  { id: '3', image: '/images/landscape/tb_a7.jpeg', platform: 'instagram' as const, likes: 2100 },
+  { id: '4', image: '/images/landscape/tb_a8.jpeg', platform: 'instagram' as const, likes: 1500 },
+  { id: '5', image: '/images/landscape/tb_a9.jpeg', platform: 'instagram' as const, likes: 980 },
+  { id: '6', image: '/images/landscape/tb_a10.jpeg', platform: 'instagram' as const, likes: 1750 },
+]
+
+const tiktokPosts = [
+  { id: '1', image: '/images/landscape/tb_a4.jpeg', platform: 'tiktok' as const, likes: 5200 },
+  { id: '2', image: '/images/landscape/tb_a10.jpeg', platform: 'tiktok' as const, likes: 3800 },
+  { id: '3', image: '/images/landscape/tb_a11.jpeg', platform: 'tiktok' as const, likes: 6700 },
+  { id: '4', image: '/images/landscape/tb_a12.jpeg', platform: 'tiktok' as const, likes: 4500 },
+  { id: '5', image: '/images/landscape/tb_a3.jpeg', platform: 'tiktok' as const, likes: 3200 },
+  { id: '6', image: '/images/landscape/tb_a2.jpeg', platform: 'tiktok' as const, likes: 5800 },
+]
+
 export default function BlogPage() {
+  const { scrollYProgress } = useScroll()
+  const heroY = useTransform(scrollYProgress, [0, 0.5], ['0%', '20%'])
+
   return (
     <div className="pt-20">
-      {/* Hero Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-mustard/10">
-          <motion.div
-            className="absolute top-0 left-0 w-96 h-96 bg-mustard/10 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.5, 0.3],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+      {/* Hero Section with Image */}
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+        <motion.div 
+          style={{ y: heroY }}
+          className="absolute inset-0"
+        >
+          <Image
+            src="/images/landscape/tb_a7.jpeg"
+            alt="Tea Break Blog"
+            fill
+            className="object-cover"
+            priority
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80" />
+        </motion.div>
+
+        <div className="absolute inset-0 pointer-events-none">
+          <motion.div
+            className="absolute top-20 left-20 hidden lg:block"
+            animate={{ 
+              y: [0, -30, 0],
+              rotate: [0, 10, -10, 0]
+            }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Sparkles className="w-12 h-12 text-mustard" />
+          </motion.div>
+          <motion.div
+            className="absolute top-1/3 right-20 hidden lg:block"
+            animate={{ 
+              y: [0, 30, 0],
+              rotate: [0, -15, 15, 0]
+            }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Zap className="w-10 h-10 text-mustard" />
+          </motion.div>
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="font-display text-5xl md:text-7xl font-bold mb-6"
+            className="font-display text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-2xl"
           >
             The <span className="gradient-text">Tea Break</span> Blog
           </motion.h1>
@@ -86,53 +138,187 @@ export default function BlogPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-xl md:text-2xl text-gray-300"
+            className="text-xl md:text-2xl text-gray-200 drop-shadow-lg"
           >
             Where food science meets food love.
           </motion.p>
         </div>
       </section>
 
-      {/* Blog Posts */}
-      <section className="py-10 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="space-y-12">
+      {/* Blog Posts Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
+              Latest <span className="gradient-text">Stories</span>
+            </h2>
+            <p className="text-gray-400 text-lg">Food philosophy, science, and everything delicious</p>
+          </motion.div>
+
+          <div className="space-y-16">
             {blogPosts.map((post, index) => (
               <motion.article
                 key={post.slug}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                whileHover={{ y: -5 }}
-                className="bg-black border-2 border-mustard/20 rounded-2xl p-8 hover:border-mustard transition-all duration-300"
+                transition={{ delay: index * 0.15, duration: 0.6 }}
+                className="bg-black border-2 border-mustard/20 rounded-3xl overflow-hidden hover:border-mustard transition-all duration-300 group"
               >
-                <div className="flex items-center gap-2 text-mustard text-sm mb-4">
-                  <Calendar className="w-4 h-4" />
-                  <time dateTime={post.date}>
-                    {new Date(post.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </time>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                  {/* Image Side */}
+                  <motion.div
+                    className="relative h-64 lg:h-full min-h-[400px] overflow-hidden"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-4 py-2 bg-mustard text-black rounded-full text-sm font-bold">
+                        {post.category}
+                      </span>
+                    </div>
+                  </motion.div>
+
+                  {/* Content Side */}
+                  <div className="p-8 lg:p-12 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center gap-3 text-mustard text-sm mb-4">
+                        <Calendar className="w-4 h-4" />
+                        <time dateTime={post.date}>
+                          {new Date(post.date).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                          })}
+                        </time>
+                      </div>
+                      <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 text-white group-hover:text-mustard transition-colors">
+                        {post.title}
+                      </h2>
+                      <p className="text-gray-300 text-lg leading-relaxed mb-6 line-clamp-4">
+                        {post.excerpt}
+                      </p>
+                    </div>
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="inline-flex items-center gap-2 text-mustard hover:text-mustard-400 font-semibold group/link"
+                    >
+                      Read Full Story
+                      <ArrowRight className="w-5 h-5 group-hover/link:translate-x-2 transition-transform" />
+                    </Link>
+                  </div>
                 </div>
-                <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 text-mustard">
-                  {post.title}
-                </h2>
-                <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                  {post.fullContent}
-                </p>
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="inline-flex items-center gap-2 text-mustard hover:text-mustard-400 font-semibold group"
-                >
-                  Read More
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
               </motion.article>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Food Banner */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <FoodBanner
+            title="Hungry for More Stories?"
+            description="Read about our food philosophy, the science behind our recipes, and the stories that make Tea Break special."
+            image="/images/landscape/tb_a8.jpeg"
+            cta="Visit Our Menu"
+            href="/menu"
+            reverse={false}
+          />
+        </div>
+      </section>
+
+      {/* Social Feeds Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-mustard/5">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
+              Follow Our <span className="gradient-text">Adventures</span>
+            </h2>
+            <p className="text-gray-400 text-lg">See what's happening at Tea Break</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Instagram Feed */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-black/50 border-2 border-mustard/20 rounded-3xl p-8 backdrop-blur-sm"
+            >
+              <SocialFeed posts={instagramPosts} platform="instagram" />
+            </motion.div>
+
+            {/* TikTok Feed */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-black/50 border-2 border-mustard/20 rounded-3xl p-8 backdrop-blur-sm"
+            >
+              <SocialFeed posts={tiktokPosts} platform="tiktok" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter/CTA Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-black border-2 border-mustard/20 rounded-3xl p-12"
+          >
+            <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+              Stay Updated with <span className="gradient-text">Tea Break</span>
+            </h2>
+            <p className="text-gray-300 text-lg mb-8">
+              Follow us on social media for daily food inspiration, behind-the-scenes content, and exclusive updates.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.a
+                href="https://www.instagram.com/teabreakcafe"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-mustard text-black font-bold rounded-full hover:bg-mustard-400 transition-colors"
+              >
+                Follow on Instagram
+              </motion.a>
+              <motion.a
+                href="https://www.tiktok.com/@teabreakcafe"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 border-2 border-mustard text-mustard rounded-full hover:bg-mustard hover:text-black transition-colors font-bold"
+              >
+                Follow on TikTok
+              </motion.a>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>
