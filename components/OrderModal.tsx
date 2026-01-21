@@ -55,18 +55,18 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative w-full max-w-2xl bg-black border-2 border-mustard/30 rounded-3xl overflow-hidden shadow-2xl">
-              {/* Close Button */}
+            <div className="relative w-full max-w-lg bg-black border-2 border-mustard/30 rounded-3xl overflow-hidden shadow-2xl">
+              {/* Close Button - More Prominent */}
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 z-10 w-10 h-10 bg-mustard/20 hover:bg-mustard text-mustard hover:text-black rounded-full flex items-center justify-center transition-colors"
+                className="absolute top-3 right-3 z-20 w-12 h-12 bg-mustard hover:bg-mustard-400 text-black rounded-full flex items-center justify-center transition-all shadow-lg hover:scale-110"
                 aria-label="Close modal"
               >
-                <X className="w-5 h-5" />
+                <X className="w-6 h-6 font-bold" />
               </button>
 
               {/* Header */}
-              <div className="relative h-48 bg-gradient-to-br from-mustard/20 to-black border-b border-mustard/20">
+              <div className="relative h-32 bg-gradient-to-br from-mustard/20 to-black border-b border-mustard/20">
                 <div className="absolute inset-0 opacity-10">
                   <Image
                     src="/images/landscape/tb_a7.jpeg"
@@ -75,19 +75,19 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                     className="object-cover"
                   />
                 </div>
-                <div className="relative z-10 flex items-center justify-center h-full p-6">
+                <div className="relative z-10 flex items-center justify-center h-full p-4">
                   <div className="text-center">
-                    <ShoppingBag className="w-16 h-16 text-mustard mx-auto mb-4" />
-                    <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-2">
+                    <ShoppingBag className="w-12 h-12 text-mustard mx-auto mb-2" />
+                    <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-1">
                       Order from <span className="gradient-text">Tea Break</span>
                     </h2>
-                    <p className="text-gray-300">Choose your preferred delivery platform</p>
+                    <p className="text-gray-300 text-sm">Choose your preferred delivery platform</p>
                   </div>
                 </div>
               </div>
 
               {/* Content */}
-              <div className="p-6 md:p-8 space-y-6">
+              <div className="p-5 md:p-6 space-y-4 max-h-[70vh] overflow-y-auto">
                 {/* Delivery Options */}
                 {deliveryOptions.map((option, index) => (
                   <motion.div
@@ -95,13 +95,13 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className={`bg-gradient-to-br ${option.color} border-2 ${option.borderColor} rounded-2xl p-6 ${option.hoverColor} transition-all`}
+                    className={`bg-gradient-to-br ${option.color} border-2 ${option.borderColor} rounded-xl p-4 ${option.hoverColor} transition-all`}
                   >
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="text-3xl">{option.icon}</span>
-                      <h3 className="font-display text-2xl font-bold text-white">{option.name}</h3>
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="text-2xl">{option.icon}</span>
+                      <h3 className="font-display text-xl font-bold text-white">{option.name}</h3>
                     </div>
-                    <div className="space-y-3">
+                    <div className="space-y-2">
                       {option.links.map((link, linkIndex) => (
                         <motion.a
                           key={linkIndex}
@@ -110,10 +110,10 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.02, x: 5 }}
                           whileTap={{ scale: 0.98 }}
-                          className="flex items-center justify-between bg-black/50 hover:bg-black/70 rounded-xl p-4 transition-colors group"
+                          className="flex items-center justify-between bg-black/50 hover:bg-black/70 rounded-lg p-3 transition-colors group"
                         >
-                          <span className="text-white font-semibold">{link.label}</span>
-                          <ExternalLink className="w-5 h-5 text-mustard group-hover:text-mustard-400 transition-colors" />
+                          <span className="text-white font-semibold text-sm">{link.label}</span>
+                          <ExternalLink className="w-4 h-4 text-mustard group-hover:text-mustard-400 transition-colors" />
                         </motion.a>
                       ))}
                     </div>
@@ -125,23 +125,23 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="bg-gradient-to-br from-mustard/20 to-black border-2 border-mustard/30 rounded-2xl p-6 hover:border-mustard transition-all"
+                  className="bg-gradient-to-br from-mustard/20 to-black border-2 border-mustard/30 rounded-xl p-4 hover:border-mustard transition-all"
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    <Phone className="w-8 h-8 text-mustard" />
-                    <h3 className="font-display text-2xl font-bold text-white">Call to Order</h3>
+                  <div className="flex items-center gap-2 mb-3">
+                    <Phone className="w-6 h-6 text-mustard" />
+                    <h3 className="font-display text-xl font-bold text-white">Call to Order</h3>
                   </div>
                   <motion.a
                     href="tel:+97124442144"
                     whileHover={{ scale: 1.02, x: 5 }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex items-center justify-between bg-black/50 hover:bg-black/70 rounded-xl p-4 transition-colors group"
+                    className="flex items-center justify-between bg-black/50 hover:bg-black/70 rounded-lg p-3 transition-colors group"
                   >
                     <div>
-                      <span className="text-white font-semibold block">Call the Cafe Directly</span>
-                      <span className="text-mustard text-sm">+971 2 444 2144</span>
+                      <span className="text-white font-semibold block text-sm">Call the Cafe Directly</span>
+                      <span className="text-mustard text-xs">+971 2 444 2144</span>
                     </div>
-                    <Phone className="w-5 h-5 text-mustard group-hover:text-mustard-400 transition-colors" />
+                    <Phone className="w-4 h-4 text-mustard group-hover:text-mustard-400 transition-colors" />
                   </motion.a>
                 </motion.div>
 
@@ -150,15 +150,15 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="text-center pt-4 border-t border-mustard/20"
+                  className="text-center pt-3 border-t border-mustard/20"
                 >
-                  <p className="text-gray-400 mb-4">Or visit us at one of our 20+ locations</p>
+                  <p className="text-gray-400 mb-3 text-sm">Or visit us at one of our 20+ locations</p>
                   <motion.a
                     href="/locations"
                     onClick={onClose}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center gap-2 px-6 py-3 border-2 border-mustard text-mustard rounded-full hover:bg-mustard hover:text-black transition-colors font-semibold"
+                    className="inline-flex items-center gap-2 px-5 py-2 border-2 border-mustard text-mustard rounded-full hover:bg-mustard hover:text-black transition-colors font-semibold text-sm"
                   >
                     Find a Location
                     <ExternalLink className="w-4 h-4" />
